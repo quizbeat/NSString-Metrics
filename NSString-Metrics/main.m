@@ -16,12 +16,12 @@ int main(int argc, const char * argv[]) {
         NSString *s2 = @"acb";
         
         NSLog(@"Levenshtein(%@, %@) = %li", s1, s2, [s1 LevenshteinDistanceFromString:s2 caseSensitive:NO]);
-        NSLog(@"Damerlau-Levenshtein(%@, %@) = %li", s1, s2, [s1 DamerauLevenshteinDistanceFromString:s2 caseSensitive:NO]);
+        NSLog(@"Damerau-Levenshtein(%@, %@) = %li", s1, s2, [s1 DamerauLevenshteinDistanceFromString:s2 caseSensitive:NO]);
         
         NSLog(@"--");
         
         NSLog(@"Levenshtein(%@, %@) = %li", s1, s2, [s1 LevenshteinDistanceFromString:s2 caseSensitive:YES]);
-        NSLog(@"Damerlau-Levenshtein(%@, %@) = %li", s1, s2, [s1 DamerauLevenshteinDistanceFromString:s2 caseSensitive:YES]);
+        NSLog(@"Damerau-Levenshtein(%@, %@) = %li", s1, s2, [s1 DamerauLevenshteinDistanceFromString:s2 caseSensitive:YES]);
         
         // ADD MORE TESTS
         

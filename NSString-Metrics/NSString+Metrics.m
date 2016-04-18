@@ -8,9 +8,12 @@
 
 #import "NSString+Metrics.h"
 
+NSInteger max(NSInteger a, NSInteger b) {
+    return (a > b) ? a : b;
+}
 
 NSInteger min(NSInteger a, NSInteger b) {
-    return MIN(a, b);
+    return (a < b) ? a : b;
 }
 
 NSInteger min3(NSInteger a, NSInteger b, NSInteger c) {
@@ -122,7 +125,7 @@ static const NSInteger defaultTransposeCost = 1;
                                                   deleteCost:deleteCost
                                                  replaceCost:replaceCost
                                                caseSensitive:caseSensitive];
-    NSInteger maxLength = MAX([self length], [string length]);
+    NSInteger maxLength = max([self length], [string length]);
     CGFloat ratio = (CGFloat)distance / (CGFloat)maxLength;
     return ratio;
 }
@@ -174,16 +177,18 @@ static const NSInteger defaultTransposeCost = 1;
         d[i] = (NSInteger *)malloc((n + 2) * sizeof(NSInteger));
     }
     
-    d[0][0] = INT_MAX;
+    NSInteger inf = INT_MAX / 2;
+    
+    d[0][0] = inf;
     
     for (NSInteger i = 0; i <= m; i++) {
         d[i + 1][1] = i;
-        d[i + 1][0] = INT_MAX;
+        d[i + 1][0] = inf;
     }
     
     for (NSInteger j = 0; j <= n; j++) {
         d[1][j + 1] = j;
-        d[0][j + 1] = INT_MAX;
+        d[0][j + 1] = inf;
     }
     
     NSMutableDictionary *lastPosition = [NSMutableDictionary dictionary];
@@ -253,7 +258,7 @@ static const NSInteger defaultTransposeCost = 1;
                                                         replaceCost:replaceCost
                                                       transposeCost:transposeCost
                                                       caseSensitive:caseSensitive];
-    NSInteger maxLength = MAX([self length], [string length]);
+    NSInteger maxLength = max([self length], [string length]);
     CGFloat ratio = (CGFloat)distance / (CGFloat)maxLength;
     return ratio;
 }
